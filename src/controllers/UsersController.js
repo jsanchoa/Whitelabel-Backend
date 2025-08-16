@@ -1,22 +1,20 @@
-import Usuarios from "../models/Usuarios.js";
-import { deleteUsuario, getUsuarios, crearUsuario, getUsuarioInfo, modificaUsuario } from "../services/UsuariosServices.js";
+import { getUserInfo, getUserList } from "../services/UsersServices.js";
 
 //* Async por que ocupo que la funcion espere una respuesta de alguien.
-export const ListaUsuarios = async(req, res) => {
+export const ListUsers = async(req, res) => {
 
     //Llamo el metodo
-    const data = await getUsuarios();
+    const data = await getUserList();
 
     res.send(data);
 }
 
-export const infoUsuario = async(req, res) => {
+export const infoUser = async(req, res) => {
 
-                           // 1
-    const idUsuario = req.params.id;
+    const user_id = req.params.id;
 
     //Llamo el metodo
-    const data = await getUsuarioInfo(idUsuario);
+    const data = await getUserInfo(user_id);
 
     res.send(data);
 }

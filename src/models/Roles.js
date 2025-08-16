@@ -4,16 +4,16 @@ import database from "../database/DatabaseConnection.js";
 class Roles extends Model {}
 
 Roles.init({
-    id_rol: {
+    roles_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING(30),
         allowNull: false
     },
-    estado: {
+    status: {
         type: DataTypes.CHAR(1),
         allowNull: false,
         defaultValue: 'A',

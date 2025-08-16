@@ -5,7 +5,7 @@ export const getRoles = async() => {
     const roles = await Roles.findAll({
     where: {
         nombre: { 
-            [Op.ne]: "Administrador" 
+            [Op.ne]: "Administrator" 
         }
     }
     });

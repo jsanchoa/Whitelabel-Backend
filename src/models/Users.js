@@ -1,45 +1,37 @@
 import { Model, DataTypes } from "sequelize";
 import database from "../database/DatabaseConnection.js";
 
-class Usuarios extends Model {}
+class Users extends Model {}
 
-Usuarios.init(
+Users.init(
     {
-        id_usuario: {
+        users_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        nombre: {
+        name: {
             type: DataTypes.STRING(30),
             allowNull: false
 
         }, 
-        apellido: {
+        last_name: {
             type: DataTypes.STRING(30),
             allowNull: false
         },
-        correo: {
-            type: DataTypes.STRING(50),
+        roles_id: {
+            type: DataTypes.INTEGER,
             allowNull: false
         }, 
-        contrasenia: {
+        password: {
             type: DataTypes.STRING(50),
             allowNull: true
         },
-        telefono: {
+        username: {
             type: DataTypes.STRING(8),
             allowNull: false
         }, 
-        cedula: {
-            type: DataTypes.STRING(9),
-            allowNull: false
-        },
-        id_rol: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        estado: {
+        status: {
             type: DataTypes.CHAR(1),
             allowNull: false,
             defaultValue: 'A',
@@ -50,11 +42,11 @@ Usuarios.init(
     },
     {
         sequelize: database,
-        modelName: "Usuarios",
-        tableName: "USUARIOS",
+        modelName: "Users",
+        tableName: "Users",
         timestamps: false,
         
     }
 );
 
-export default Usuarios;
+export default Users;

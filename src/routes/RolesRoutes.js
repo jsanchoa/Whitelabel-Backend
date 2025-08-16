@@ -1,9 +1,9 @@
-import { ListaRol } from "../controllers/RolController.js";
+import { ListRol } from "../controllers/RolController.js";
 
 export const RolesRoutes = (app) => {
 
     const version = process.env.VERSION || "vtest";
 
-    app.get(`/${version}/roles/lista`, ListaRol);
+    app.get(`/${version}/roles/list`, ListRol);
 
 }
