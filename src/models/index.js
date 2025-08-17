@@ -3,6 +3,10 @@ import Users from "./Users.js";
 import Roles from "./Roles.js";
 
 
+
+import bcrypt from "bcrypt";
+
+
 //!Acá se hacen las relaciones
 /*
 Ejemplo:
@@ -14,7 +18,21 @@ Users.belongsTo(Roles, { foreignKey: 'roles_id' });
 
 
 //! Creacion de usuarios de prueba cada vez que se inicia la BD pero tienen que desactivar el { force: true } en el index principal del proyecto
-// await Users.create({ name: 'Jose', last_name: 'Sancho', roles_id: 1, password: 'KSDAKASDKAKSD', username: 'jsancho' });
+//contraseña sin hashear
+const pswd = "prueba"
+
+//Numero de rondas para hashear la contraseña
+const saltRounds = 10;
+
+//Encripto la contraseña
+const encryptedpassword = await bcrypt.hash(pswd, saltRounds);
+
+//Creo un rol y usuario por defecto, usando el find (encuentre) or(Sino) Create(creelo).
+await Roles.findOrCreate({ where: { name: 'Administrator'}, defaults: { name: 'Administrator'} });
+await Users.findOrCreate({ where: { username: 'jsancho' }, defaults: { name: 'Jose', last_name: 'Sancho', roles_id: 1, password: encryptedpassword } });
+await Users.findOrCreate({ where: { username: 'nsegura' }, defaults: { name: 'Noelia', last_name: 'Segura', roles_id: 1, password: encryptedpassword } });
+await Users.findOrCreate({ where: { username: 'jtorres' }, defaults: { name: 'Jimena', last_name: 'Torres', roles_id: 1, password: encryptedpassword } });
+await Users.findOrCreate({ where: { username: 'mmora' }, defaults: { name: 'Manuel', last_name: 'Mora', roles_id: 1, password: encryptedpassword } });
 
 
 export {

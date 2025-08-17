@@ -24,7 +24,7 @@ Users.init(
             allowNull: false
         }, 
         password: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING(60),
             allowNull: true
         },
         username: {

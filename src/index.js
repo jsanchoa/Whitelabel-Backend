@@ -6,6 +6,8 @@ import database from "./database/DatabaseConnection.js";
 import * as modelos from "./models/index.js";
 import cors from "cors";
 import { RolesRoutes } from "./routes/RolesRoutes.js";
+import { AuthRoutes } from "./routes/AuthRoutes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -13,8 +15,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-//* Esta libreria permite que el backend permita recibir solicitudes desde el frontend u otros lugares.
-app.use(cors());
+//* Esta libreria permite que el backend permita recibir solicitudes desde el frontend.
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
+app.use(cookieParser());
 
 //* Este indica a la aplicación que es un tipo de servidor JSON
 app.use(express.json());
@@ -22,16 +29,17 @@ app.use(express.json());
 //* Registra las rutas de Usuarios, Roles, etc, etc.
 UsersRoutes(app);
 RolesRoutes(app);
+AuthRoutes(app);
 
 app.listen(port, async () => {
     try {
         await database.authenticate();
 
         //* Force: true, permite que cada vez que se inicie el proyecto, se dropeen las tablas.
-        await database.sync({ force: true });
+        // await database.sync({ force: true });
 
         //* Esta simplemente crea las tablas, y las deja ahi.
-        // await database.sync();
+        await database.sync();
 
         console.log(`Server started on port ${port}`)
     } catch(error) {
