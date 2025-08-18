@@ -45,4 +45,4 @@ Product.init({
     }
 );
 
-export default Roles;
+export default Product;

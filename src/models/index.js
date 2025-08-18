@@ -1,6 +1,10 @@
 //* Acá se importan todos los modelos creados
 import Users from "./Users.js";
 import Roles from "./Roles.js";
+import Category from "./Category.js";
+import Inventory from "./Inventory.js";
+import POProducts from "./POProducts.js";
+import Product from "./Product.js";
 
 
 
@@ -37,5 +41,9 @@ await Users.findOrCreate({ where: { username: 'mmora' }, defaults: { name: 'Manu
 
 export {
   Users,
-  Roles
+  Roles,
+  Category,
+  Inventory,
+  POProducts,
+  Product
 };

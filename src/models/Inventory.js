@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import database from "../database/DatabaseConnection.js";
 
-class Category extends Model {}
+class Inventory extends Model {}
 
-Category.init({
+Inventory.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -28,10 +28,10 @@ Category.init({
     },
     {
         sequelize: database,
-        modelName: "Category",
-        tableName: "Category",
+        modelName: "Inventory",
+        tableName: "Inventory",
         timestamps: false
     }
 );
 
-export default Category;
+export default Inventory;
