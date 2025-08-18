@@ -37,7 +37,7 @@ app.listen(port, async () => {
         await database.authenticate();
 
         //* Force: true, permite que cada vez que se inicie el proyecto, se dropeen las tablas.
-        // await database.sync({ force: true });
+        //  await database.sync({ force: true });
 
         //* Esta simplemente crea las tablas, y las deja ahi.
         await database.sync();
