@@ -30,6 +30,7 @@ app.use(express.json());
 UsersRoutes(app);
 RolesRoutes(app);
 AuthRoutes(app);
+// BillingRoutes(app);
 
 app.listen(port, async () => {
     try {
