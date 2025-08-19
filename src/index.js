@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import { UsersRoutes } from "./routes/UsersRoutes.js";
 import database from "./database/DatabaseConnection.js";
-import * as modelos from "./models/index.js";
+import { Client, Provider, Roles, Users, Category, ClientPurchaseOrder, Product, POProducts }   from "./models/index.js";
 import cors from "cors";
 import { RolesRoutes } from "./routes/RolesRoutes.js";
 import { AuthRoutes } from "./routes/AuthRoutes.js";
@@ -17,6 +17,7 @@ import { InventoryRoutes } from "./routes/InventoryRoutes.js";
 import { POProductsRoutes } from "./routes/POProductsRoutes.js";
 import { ProductRoutes } from "./routes/ProductRoutes.js";
 import { ProviderRoutes } from "./routes/ProviderRoutes.js";
+import bcrypt from "bcrypt";
 
 dotenv.config();
 

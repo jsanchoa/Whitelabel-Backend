@@ -13,9 +13,6 @@ import Provider from "./Provider.js";
 import Client from "./Client.js";
 
 
-import bcrypt from "bcrypt";
-
-
 //!Acá se hacen las relaciones
 /*
 Ejemplo:
