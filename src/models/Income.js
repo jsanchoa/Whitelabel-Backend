@@ -36,7 +36,7 @@ Income.init({
     {
         sequelize: database,
         modelName: "Income",
-        tableName: "Income",
+        tableName: "V_Income",
         timestamps: false
     }
 );
