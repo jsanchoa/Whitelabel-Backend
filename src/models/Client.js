@@ -29,9 +29,13 @@ Client.init({
         type: DataTypes.STRING(20),
         allowNull: true
     },
-    status: {
-        type: DataTypes.STRING(20),
-        allowNull: false
+    status: { 
+        type: DataTypes.CHAR(1),
+        allowNull: false,
+        defaultValue: 'A',
+        validate: {
+            isIn: [['A', 'I']]
+        }
     }
 },
 {
