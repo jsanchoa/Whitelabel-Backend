@@ -1,4 +1,4 @@
-import { getProviderInfo, getProviders, hideProviders, modifyProvider, newProvider } from "../services/ProviderServices.js";
+import { getProviderInfo, getProviders, hideProvider, modifyProvider, newProvider } from "../services/ProviderServices.js";
 
 export const ListProviders = async(req, res) => {
     const data = await getProviders();
@@ -53,7 +53,7 @@ export const removeProvider = async(req, res) => {
 
     try {
         //Enviar la informacion al service
-        const hideProvider = await hideProviders(id);
+        const hideProvide = await hideProvider(id);
         res.send({ success: true, message: "This Provider has been deleted sucessfully."})
 
     } catch(error) {
