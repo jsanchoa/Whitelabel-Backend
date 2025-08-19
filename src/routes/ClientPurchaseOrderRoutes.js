@@ -1,4 +1,4 @@
-import { ListClientPurchaseOrder } from "../controllers/ClientPurchaseOrderController.js";
+import { ListClientPurchaseOrder } from "../controllers/ClientPurchaseOrderCrontroller.js";
 
 export const ClientPurchaseOrderRoutes = (app) => {
 

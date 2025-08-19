@@ -2,7 +2,9 @@ import Users from "../models/Users.js";
 
 export const getUserList = async() => {
 
-  const users = await Users.findAll();
+  const users = await Users.findAll({ attributes: 
+    ['users_id', 'name', 'last_name', 'username', 'roles_id', 'status']
+  });
 
   return users;
 }

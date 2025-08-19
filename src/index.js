@@ -47,4 +47,20 @@ POProductsRoutes(app);
 ProductRoutes(app);
 ProviderRoutes(app);
 
+app.listen(port, async () => {
+    try {
+        await database.authenticate();
 
+        //* Force: true, permite que cada vez que se inicie el proyecto, se dropeen las tablas.
+        //  await database.sync({ force: true });
+
+        //* Esta simplemente crea las tablas, y las deja ahi.
+        await database.sync();
+
+        console.log(`Server started on port ${port}`)
+    } catch(error) {
+        console.log(error)
+    }
+});
+
+export default { app };
