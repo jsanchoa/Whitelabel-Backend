@@ -1,7 +1,16 @@
-import { getClients, hideClients, newClient } from "../services/ClientServices.js";
+import { getClientInfo, getClients, hideClients, modifyClient, newClient } from "../services/ClientServices.js";
 
 export const ListClients = async(req, res) => {
     const data = await getClients();
+
+    res.send(data);
+}
+
+export const infoClient = async(req, res) => {
+
+    const id = req.params.id;
+
+    const data = await getClientInfo(id);
 
     res.send(data);
 }
@@ -18,6 +27,22 @@ export const addClient = async(req, res) => {
 
     } catch(error) {
         res.send({ success: false, message: "A new client can not be created."})
+    }
+
+}
+
+export const editClient = async(req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+
+    try {
+        //Mdoificar la informacion al service
+        await modifyClient(id, data);
+
+        res.send({ success: true, message: "A new client has been modified sucessfully."})
+
+    } catch(error) {
+        res.send({ success: false, message: "A new client can not be modified."})
     }
 
 }
