@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import database from "../database/DatabaseConnection.js";
 
-class ProviderInvoice extends Model {}
+class Provider_Invoice extends Model {}
 
-ProviderInvoice.init({
+Provider_Invoice.init({
     ppo_product_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,7 +12,7 @@ ProviderInvoice.init({
     provider_id: {
         type: DataTypes.INTEGER,
     },
-    date: {
+    invoice_date: {
         type: DataTypes.DATE,
     },
     tax: {
@@ -32,10 +32,10 @@ ProviderInvoice.init({
 },
     {
         sequelize: database,
-        modelName: "ProviderInvoice",
-        tableName: "ProviderInvoice",
+        modelName: "Provider_Invoice",
+        tableName: "Provider_Invoice",
         timestamps: false
     }
 );
 
-export default ProviderInvoice;
+export default Provider_Invoice;
