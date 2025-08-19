@@ -1,10 +1,13 @@
-import { addProvider, ListProviders, removeProvider } from "../controllers/ProviderController.js";
+import { addProvider, editProvider, infoProvider, ListProviders, removeProvider} from "../controllers/ProviderController.js";
 
-export const ProviderRoutes = (app) => {
+export const ProvidersRoutes = (app) => {
 
     const version = process.env.VERSION || "vtest";
 
     app.get(`/${version}/providers/list`, ListProviders);
-    app.post(`/${version}/rovider/add`, addProvider);
-    app.delete(`/${version}/provider/delete/:id`, removeProvider);
+    app.get(`/${version}/providers/info/:id`, infoProviders);
+    app.post(`/${version}/providers/add`, addProvider);
+    app.patch(`/${version}/providers/edit/:id`, editProvider);
+    app.delete(`/${version}/providers/delete/:id`, removeProvider);
+
 }
