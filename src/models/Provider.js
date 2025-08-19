@@ -1,32 +1,29 @@
 import { Model, DataTypes } from "sequelize";
 import database from "../database/DatabaseConnection.js";
 
-class Product extends Model {}
+class Provider extends Model {}
 
-Product.init({
-    product_id: {
+Provider.init({
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    category_id: {
-        type: DataTypes.INTEGER,
-    },
-    provider_id: {
-        type: DataTypes.INTEGER,
-    },
-    description: {
-        type: DataTypes.STRING(30),
+    name: {
+        type: DataTypes.STRING(90),
         allowNull: false
     },
-    price: {
-        type: DataTypes.DOUBLE,
+    business_type: {
+        type: DataTypes.STRING(90),
+        allowNull: false
     },
-    stock: {
-        type: DataTypes.INTEGER,
+    account_number: {
+        type: DataTypes.STRING(34),
+        allowNull: false
     },
-    sku: {
-        type: DataTypes.STRING(20),
+    address: {
+        type: DataTypes.STRING(200),
+        allowNull: false
     },
     status: {
         type: DataTypes.CHAR(1),
@@ -39,10 +36,10 @@ Product.init({
 },
     {
         sequelize: database,
-        modelName: "Product",
-        tableName: "Product",
+        modelName: "Provider",
+        tableName: "Provider",
         timestamps: false
     }
 );
 
-export default Product;
+export default Provider;

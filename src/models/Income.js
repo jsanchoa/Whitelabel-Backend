@@ -1,32 +1,28 @@
 import { Model, DataTypes } from "sequelize";
 import database from "../database/DatabaseConnection.js";
 
-class Product extends Model {}
+class Income extends Model {}
 
-Product.init({
-    product_id: {
+Income.init({
+    ppo_product_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    category_id: {
-        type: DataTypes.INTEGER,
+    bill_date: {
+        type: DataTypes.DATE,
     },
-    provider_id: {
-        type: DataTypes.INTEGER,
+    client_name: {
+        type: DataTypes.STRING(90),
     },
-    description: {
-        type: DataTypes.STRING(30),
-        allowNull: false
-    },
-    price: {
+    subtotal: {
         type: DataTypes.DOUBLE,
     },
-    stock: {
-        type: DataTypes.INTEGER,
+    tax: {
+        type: DataTypes.DOUBLE,
     },
-    sku: {
-        type: DataTypes.STRING(20),
+    total: {
+        type: DataTypes.DOUBLE,
     },
     status: {
         type: DataTypes.CHAR(1),
@@ -39,10 +35,10 @@ Product.init({
 },
     {
         sequelize: database,
-        modelName: "Product",
-        tableName: "Product",
+        modelName: "Income",
+        tableName: "Income",
         timestamps: false
     }
 );
 
-export default Product;
+export default Income;
