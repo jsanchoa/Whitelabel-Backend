@@ -9,10 +9,6 @@ ClientPurchaseOrder.init({
         primaryKey: true,
         autoIncrement: true
     },
-    po_product_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     client_id: {
         type: DataTypes.INTEGER,
         allowNull: false

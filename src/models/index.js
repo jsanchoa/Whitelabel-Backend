@@ -37,6 +37,7 @@ ClientPurchaseOrder.belongsTo(Client, { foreignKey: "client_id" });
 Product.hasMany(ClientPurchaseOrder, { foreignKey: "po_product_id" });
 ClientPurchaseOrder.belongsTo(Product, { foreignKey: "po_product_id" });
 
+// ClientPurchaseOrder.js
 ClientPurchaseOrder.hasMany(POProducts, { foreignKey: "purchase_order_id" });
 POProducts.belongsTo(ClientPurchaseOrder, { foreignKey: "purchase_order_id" });
 
@@ -101,6 +102,59 @@ await Provider.findOrCreate({
         status: "A"
       }
     });
+await Category.findOrCreate({
+      where: { name: "Electrónica" },  // criterio único (puede ser name)
+      defaults: {
+        image: "electronics.png",
+        description: "Dispositivos y accesorios electrónicos",
+        status: "A"
+      }
+    });
+await Product.findOrCreate({
+      where: { sku: "SKU12345" },  // condición única para buscar
+      defaults: {
+        category_id: 1,
+        provider_id: 1,
+        description: "Mouse Gamer RGB",
+        price: 25.50,
+        stock: 100,
+        status: "A"
+      }
+    });
+
+await Product.findOrCreate({
+  where: { sku: "SKU67890" },  // condición única para buscar
+  defaults: {
+    category_id: 1,
+    provider_id: 1,
+    description: "Teclado Mecánico RGB",
+    price: 45.75,
+    stock: 50,
+    status: "A"
+  }
+});
+
+await ClientPurchaseOrder.findOrCreate({
+      where: {
+        client_id: 1,        // ID del cliente
+      },
+      defaults: {
+        status: "A"
+      }
+    });
+
+await POProducts.findOrCreate({
+      where: {
+        product_id: 1,               // Producto comprado
+        purchase_order_id: 1 // Asociado a la orden creada
+      },
+      defaults: {
+        quantity: 3   // Cantidad de ese producto
+      }
+    });
+
+
+
 
 export {
   Users,
