@@ -12,6 +12,7 @@ import { CategoryRoutes } from "./routes/CategoryRoutes.js";
 import { ClientsRoutes } from "./routes/ClientRoutes.js";
 import { ClientPurchaseOrderRoutes } from "./routes/ClientPurchaseOrderRoutes.js";
 import { IncomeRoutes } from "./routes/IncomeRoutes.js";
+import { ExpenseRoutes } from "./routes/ExpenseRoutes.js";
 import { InventoryRoutes } from "./routes/InventoryRoutes.js";
 import { POProductsRoutes } from "./routes/POProductsRoutes.js";
 import { ProductRoutes } from "./routes/ProductRoutes.js";
@@ -42,6 +43,7 @@ ClientsRoutes(app);
 ClientPurchaseOrderRoutes(app);
 CategoryRoutes(app);
 IncomeRoutes(app);
+ExpenseRoutes(app);
 InventoryRoutes(app);
 POProductsRoutes(app);
 ProductRoutes(app);
@@ -52,7 +54,7 @@ app.listen(port, async () => {
         await database.authenticate();
 
         //* Force: true, permite que cada vez que se inicie el proyecto, se dropeen las tablas.
-        //  await database.sync({ force: true });
+        //await database.sync({ force: true });
 
         //* Esta simplemente crea las tablas, y las deja ahi.
         await database.sync();
