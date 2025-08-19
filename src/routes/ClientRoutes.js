@@ -4,6 +4,6 @@ export const ClientsRoutes = (app) => {
 
     const version = process.env.VERSION || "vtest";
 
-    app.get(`/${version}/categories/list`, ListClients);
+    app.get(`/${version}/clients/list`, ListClients);
 
 }
