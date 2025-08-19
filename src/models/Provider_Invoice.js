@@ -4,11 +4,6 @@ import database from "../database/DatabaseConnection.js";
 class Provider_Invoice extends Model {}
 
 Provider_Invoice.init({
-    ppo_product_id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
     provider_id: {
         type: DataTypes.INTEGER,
     },

@@ -1,8 +1,8 @@
-import { where } from "sequelize";
 import Client from "../models/Client.js";
 import ClientPurchaseOrder from "../models/ClientPurchaseOrder.js"
 import POProducts from "../models/POProducts.js";
 import Product from "../models/Product.js";
+
 
 export const getClientPurchaseOrder = async() => {
     const ClientPurchaseOrders = await ClientPurchaseOrder.findAll({
