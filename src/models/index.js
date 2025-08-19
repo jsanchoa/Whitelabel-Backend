@@ -37,6 +37,7 @@ ClientPurchaseOrder.belongsTo(Client, { foreignKey: "client_id" });
 Product.hasMany(ClientPurchaseOrder, { foreignKey: "po_product_id" });
 ClientPurchaseOrder.belongsTo(Product, { foreignKey: "po_product_id" });
 
+// ClientPurchaseOrder.js
 ClientPurchaseOrder.hasMany(POProducts, { foreignKey: "purchase_order_id" });
 POProducts.belongsTo(ClientPurchaseOrder, { foreignKey: "purchase_order_id" });
 
@@ -69,38 +70,6 @@ Invoice.belongsTo(ClientPurchaseOrder, { foreignKey: "purchase_order_id" });
 
 
 
-
-//! Creacion de usuarios de prueba cada vez que se inicia la BD pero tienen que desactivar el { force: true } en el index principal del proyecto
-//contraseña sin hashear
-const pswd = "prueba"
-
-//Numero de rondas para hashear la contraseña
-const saltRounds = 10;
-
-//Encripto la contraseña
-const encryptedpassword = await bcrypt.hash(pswd, saltRounds);
-
-//Creo un rol y usuario por defecto, usando el find (encuentre) or(Sino) Create(creelo).
-await Roles.findOrCreate({ where: { name: 'Administrator'}, defaults: { name: 'Administrator'} });
-await Users.findOrCreate({ where: { username: 'jsancho' }, defaults: { name: 'Jose', last_name: 'Sancho', roles_id: 1, password: encryptedpassword } });
-await Users.findOrCreate({ where: { username: 'nsegura' }, defaults: { name: 'Noelia', last_name: 'Segura', roles_id: 1, password: encryptedpassword } });
-await Users.findOrCreate({ where: { username: 'jtorres' }, defaults: { name: 'Jimena', last_name: 'Torres', roles_id: 1, password: encryptedpassword } });
-await Users.findOrCreate({ where: { username: 'mmora' }, defaults: { name: 'Manuel', last_name: 'Mora', roles_id: 1, password: encryptedpassword } });
-await Client.findOrCreate({ where: { email: "jose@example.com" }, defaults: {    
-      name: "Jose",
-      last_name: "Sancho",
-      phone: "72761247",
-      status: "A" }  // recuerda que solo acepta 'A' o 'I'
-    });
-await Provider.findOrCreate({
-      where: { account_number: "CR05015202001026284066" }, // condición para buscar
-      defaults: {                                          // valores a insertar si no existe
-        name: "Ferretería La Unión",
-        business_type: "Ferretería",
-        address: "San José, Costa Rica",
-        status: "A"
-      }
-    });
 
 export {
   Users,
